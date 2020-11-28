@@ -1,0 +1,12 @@
+prefix=C:/Users/adam/Dev/ultralight-ux/WebCore-deps2/build-win-msvc-2019-mt
+exec_prefix=C:/Users/adam/Dev/ultralight-ux/WebCore-deps2/build-win-msvc-2019-mt
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libbrotlidec
+URL: https://github.com/google/brotli
+Description: Brotli decoder library
+Version: 1.0.7
+Libs: -L${libdir} -lbrotlidec
+Requires.private: libbrotlicommon >= 1.0.2
+Cflags: -I${includedir}

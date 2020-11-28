@@ -1,6 +1,10 @@
 @echo off
 SETLOCAL
-set "VCVARS=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat"
+if exist "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" (
+    set "VCVARS=C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
+) else (
+    set "VCVARS=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat"
+)
 if "%1"=="release" GOTO CHECKTYPE
 if "%1"=="full_release" GOTO CHECKTYPE
 if "%1"=="debug" GOTO CHECKTYPE

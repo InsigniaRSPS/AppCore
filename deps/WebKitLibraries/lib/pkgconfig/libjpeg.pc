@@ -1,0 +1,10 @@
+prefix=C:/Users/adam/Dev/ultralight-ux/WebCore-deps2/build-win-msvc-2019-mt
+exec_prefix=C:/Users/adam/Dev/ultralight-ux/WebCore-deps2/build-win-msvc-2019-mt
+libdir=C:/Users/adam/Dev/ultralight-ux/WebCore-deps2/build-win-msvc-2019-mt/lib
+includedir=C:/Users/adam/Dev/ultralight-ux/WebCore-deps2/build-win-msvc-2019-mt/include
+
+Name: libjpeg
+Description: A SIMD-accelerated JPEG codec that provides the libjpeg API
+Version: 2.0.4
+Libs: -L${libdir} -ljpeg
+Cflags: -I${includedir}
