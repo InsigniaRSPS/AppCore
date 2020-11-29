@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: choco install ninja gperf
+      - run: choco install ninja
 
       - name: Download UltralightCore
         uses: dawidd6/action-download-artifact@v2
