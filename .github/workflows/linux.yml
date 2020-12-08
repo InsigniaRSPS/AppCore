@@ -1,4 +1,4 @@
-name: Windows Build
+name: Linux Build
 
 on: [ push ]
 
@@ -7,17 +7,17 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - run: choco install ninja
+      - run: sudo apt update && sudo apt install ninja-build lld-8 libx11-dev xorg-dev libglu1-mesa-dev
 
       - name: Download UltralightCore
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.ACCESS_TOKEN}}
-          workflow: windows.yml
+          workflow: linux.yml
           workflow_conclusion: success
           name: ultralight-core
           path: deps/UltralightCore
@@ -27,7 +27,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.ACCESS_TOKEN}}
-          workflow: windows.yml
+          workflow: linux.yml
           workflow_conclusion: success
           name: webkitlibraries
           path: deps/WebKitLibraries
@@ -37,7 +37,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.ACCESS_TOKEN}}
-          workflow: windows.yml
+          workflow: linux.yml
           workflow_conclusion: success
           name: webcore
           path: deps/WebCore
@@ -47,19 +47,19 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.ACCESS_TOKEN}}
-          workflow: windows.yml
+          workflow: linux.yml
           workflow_conclusion: success
           name: ultralight
           path: deps/Ultralight
           repo: InsigniaRSPS/Ultralight-src
 
       - name: Build AppCore
-        run: ./make release x64 local static static_crt
+        run: ./make
 
       - name: Check if build exists
-        run: if (!(test-path ".\build_release_x64_static_MT\")) { exit 1 }
-        
+        run: (test -d "build/out") || exit 1
+
       - uses: actions/upload-artifact@v2
         with:
           name: appcore
-          path: build_release_x64_static_MT/out/
+          path: build/out/
