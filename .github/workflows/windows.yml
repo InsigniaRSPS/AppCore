@@ -58,7 +58,7 @@ jobs:
 
       - name: Check if build exists
         run: if (!(test-path ".\build_release_x64_static_MT\")) { exit 1 }
-        
+
       - uses: actions/upload-artifact@v2
         with:
           name: appcore
