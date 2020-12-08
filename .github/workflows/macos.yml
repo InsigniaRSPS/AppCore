@@ -54,7 +54,7 @@ jobs:
           repo: InsigniaRSPS/Ultralight-src
 
       - name: Build AppCore
-        run: chmod +X ./make && ./make
+        run: chmod 777 ./make && ./make
 
       - name: Check if build exists
         run: (test -d "build/out") || exit 1
