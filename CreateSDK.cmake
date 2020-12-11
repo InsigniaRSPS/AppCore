@@ -1,11 +1,11 @@
-if (PORT MATCHES "UltralightWin")
-    INSTALL(TARGETS AppCore
+if (PORT MATCHES "UltralightLinux")
+    INSTALL(TARGETS AppCore glfw
             RUNTIME DESTINATION "bin"
             LIBRARY DESTINATION "bin"
             ARCHIVE DESTINATION "lib"
             )
 else ()
-    INSTALL(TARGETS AppCore glfw
+    INSTALL(TARGETS AppCore
             RUNTIME DESTINATION "bin"
             LIBRARY DESTINATION "bin"
             ARCHIVE DESTINATION "lib"
