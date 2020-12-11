@@ -56,10 +56,8 @@ jobs:
       - name: Build AppCore
         run: ./make release x64 local static static_crt
 
-      - name: Check if build exists
-        run: if (!(test-path ".\build_release_x64_static_MT\")) { exit 1 }
-
       - uses: actions/upload-artifact@v2
         with:
           name: appcore
           path: build_release_x64_static_MT/out/
+          if-no-files-found: error

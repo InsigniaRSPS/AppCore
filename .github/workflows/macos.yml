@@ -54,12 +54,10 @@ jobs:
           repo: InsigniaRSPS/Ultralight-src
 
       - name: Build AppCore
-        run: chmod 777 ./make && ./make
-
-      - name: Check if build exists
-        run: (test -d "build/out") || exit 1
+        run: ./make
 
       - uses: actions/upload-artifact@v2
         with:
           name: appcore
           path: build/out/
+          if-no-files-found: error
