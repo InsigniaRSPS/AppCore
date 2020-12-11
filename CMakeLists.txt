@@ -38,9 +38,15 @@ load_sources(AppCore_SOURCES "include")
 load_sources(AppCore_SOURCES "src/common")
     
 if (PORT MATCHES "UltralightLinux")
-    link_directories("${ULTRALIGHTCORE_DIR}/bin"
-                     "${WEBCORE_DIR}/bin"
-                     "${ULTRALIGHT_DIR}/bin")
+    if (STATIC_BUILD)
+        link_directories("${ULTRALIGHTCORE_DIR}/lib"
+                "${WEBCORE_DIR}/lib"
+                "${ULTRALIGHT_DIR}/lib")
+    else()
+        link_directories("${ULTRALIGHTCORE_DIR}/bin"
+                "${WEBCORE_DIR}/bin"
+                "${ULTRALIGHT_DIR}/bin")
+    endif ()
 
     if (${BUILD_DBG})
         # Debug Config
@@ -76,9 +82,15 @@ if (PORT MATCHES "UltralightLinux")
     
     link_libraries(glfw fontconfig)
 elseif (PORT MATCHES "UltralightMac")
-    link_directories("${ULTRALIGHTCORE_DIR}/bin"
-                     "${WEBCORE_DIR}/bin"
-                     "${ULTRALIGHT_DIR}/bin")
+    if (STATIC_BUILD)
+        link_directories("${ULTRALIGHTCORE_DIR}/lib"
+                "${WEBCORE_DIR}/lib"
+                "${ULTRALIGHT_DIR}/lib")
+    else()
+        link_directories("${ULTRALIGHTCORE_DIR}/bin"
+                "${WEBCORE_DIR}/bin"
+                "${ULTRALIGHT_DIR}/bin")
+    endif ()
 
     if (${BUILD_DBG})
         # Debug Config
